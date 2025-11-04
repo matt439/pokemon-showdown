@@ -3,7 +3,7 @@
  * Pokemon Showdown - http://pokemonshowdown.com/
  *
  * Test battle using fixed Gen 9 singles team.
- * Run this using `node build && node .sim-dist/examples/apogee-vgc-singles-test`.
+ * Run this using `node build && node dist/sim/examples/apogee-vgc-singles-test`.
  *
  * @license MIT
  */
@@ -15,71 +15,8 @@ import { RandomPlayerAI } from '../tools/random-player-ai';
  * Fixed Test Team - Gen 9 Singles
  *********************************************************************/
 
-const testTeam = `Calyrex-Ice @ Leftovers
-Ability: As One (Glastrier)
-Level: 50
-Tera Type: Water
-EVs: 236 HP / 36 Atk / 236 SpD
-Adamant Nature
-- Glacial Lance
-- Leech Seed
-- Trick Room
-- Protect
-
-Miraidon @ Choice Specs
-Ability: Hadron Engine
-Level: 50
-Tera Type: Fairy
-EVs: 236 HP / 52 Def / 124 SpA / 68 SpD / 28 Spe
-Modest Nature
-- Volt Switch
-- Dazzling Gleam
-- Electro Drift
-- Draco Meteor
-
-Ursaluna @ Flame Orb
-Ability: Guts
-Level: 50
-Tera Type: Ghost
-EVs: 108 HP / 156 Atk / 4 Def / 116 SpD / 124 Spe
-Adamant Nature
-- Facade
-- Crunch
-- Headlong Rush
-- Protect
-
-Volcarona @ Rocky Helmet
-Ability: Flame Body
-Level: 50
-Tera Type: Water
-EVs: 252 HP / 196 Def / 60 SpD
-Bold Nature
-- Struggle Bug
-- Overheat
-- Protect
-- Tailwind
-
-Grimmsnarl @ Light Clay
-Ability: Prankster
-Level: 50
-Tera Type: Ghost
-EVs: 236 HP / 4 Atk / 140 Def / 116 SpD / 12 Spe
-Careful Nature
-- Spirit Break
-- Thunder Wave
-- Reflect
-- Light Screen
-
-Iron Hands @ Assault Vest
-Ability: Quark Drive
-Level: 50
-Tera Type: Bug
-EVs: 236 HP / 236 SpD / 36 Spe
-Adamant Nature
-- Fake Out
-- Heavy Slam
-- Low Kick
-- Wild Charge`;
+// Packed team format
+const testTeam = 'Calyrex-Ice||Leftovers|AsOneGlastrier|glaciallance,leechseed,trickroom,protect||236,36,,0,236,|M|,,,,,0|||50|,,,,,Water]Miraidon||ChoiceSpecs|HadronEngine|voltswitch,dazzlinggleam,electrodrift,dracometeor||236,,52,124,68,28|M||||50|,,,,,Fairy]Ursaluna||FlameOrb|Guts|facade,crunch,headlongrush,protect||108,156,4,0,116,124|M||||50|,,,,,Ghost]Volcarona||RockyHelmet|FlameBody|strugglebug,overheat,protect,tailwind||252,0,196,0,60,|M||||50|,,,,,Water]Grimmsnarl||LightClay|Prankster|spiritbreak,thunderwave,reflect,lightscreen||236,4,140,0,116,12|M||||50|,,,,,Ghost]Iron Hands||AssaultVest|QuarkDrive|fakeout,heavyslam,lowkick,wildcharge||236,0,,0,236,36|M||||50|,,,,,Bug';
 
 /*********************************************************************
  * Run AI Battle
@@ -88,7 +25,7 @@ Adamant Nature
 const streams = getPlayerStreams(new BattleStream());
 
 const spec = {
-	formatid: "gen9ou",
+	formatid: "gen9customgame",
 };
 const p1spec = {
 	name: "Apogee Bot 1",
